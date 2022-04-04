@@ -5,6 +5,7 @@ const express = require("express");
 const app = express();
 const router = express.Router();
 const mongoose = require("mongoose");
+const path = require("path");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const { auth } = require("./middleware/auth");
