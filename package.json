@@ -4,7 +4,8 @@
   "description": "Meta Earth",
   "main": "server/index.js",
   "scripts": {
-    "start": "node server/index.js",
+    "heroku-prebuild": "cd client && npm ci && npm run build && mv build ../server",
+    "start": "cd server && npm ci && node index.js",
     "backend": "nodemon server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "concurrently \"npm run backend\" \" npm run start --prefix client\""
