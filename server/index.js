@@ -8,7 +8,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const { auth } = require("./middleware/auth");
-const port = process.env.SERVER_PORT || 5000;
+const port = process.env.PORT || 5000;
 
 // application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -95,4 +95,6 @@ app.get("/api/users/logout", auth, (req, res) => {
     });
   });
 });
-app.listen(port, () => console.log(`server is listening on ${port}!`));
+app.listen(process.env.PORT || 5000, () =>
+  console.log(`server is listening on ${port}!`)
+);
