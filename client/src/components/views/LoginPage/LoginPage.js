@@ -5,6 +5,20 @@ import { loginUser } from "../../../_actions/user_actions";
 // import Form from "react-bootstrap/Form";
 // import Button from "react-bootstrap/Button";
 import { Col, Row, Form, Button, Container } from "react-bootstrap";
+import styled from "styled-components";
+
+const StyleBody = styled.body`
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const StyleForm = styled.div`
+  width: 100%;
+  color: white;
+  border: 1px solid white;
+`;
 
 function LoginPage(props) {
   let navigate = useNavigate();
@@ -36,25 +50,23 @@ function LoginPage(props) {
       <>
         <Container>
           <Row>
-            <Col lg={4} md={6} sm={12}>
-              <Form>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Email address</Form.Label>
-                  <Form.Control type="email" placeholder="Enter email" />
-                </Form.Group>
+            <Form>
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control type="email" placeholder="Enter email" />
+              </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control type="password" placeholder="Password" />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                  <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                  Submit
-                </Button>
-              </Form>
-            </Col>
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control type="password" placeholder="Password" />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                <Form.Check type="checkbox" label="Check me out" />
+              </Form.Group>
+              <Button variant="primary" type="submit">
+                Submit
+              </Button>
+            </Form>
           </Row>
         </Container>
       </>
@@ -62,18 +74,16 @@ function LoginPage(props) {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        // width: "100%",
-        height: "100vh",
-      }}
-    >
-      <Login></Login>
+    <StyleBody>
+      <div
+      // style={{
+      // }}
+      >
+        <StyleForm>
+          <Login></Login>
+        </StyleForm>
 
-      {/* <form
+        {/* <form
         style={{ display: "flex", flexDirection: "column" }}
         onSubmit={onSubmitHandler}
       >
@@ -88,7 +98,8 @@ function LoginPage(props) {
         <br />
         <button type="submit">login</button>
       </form> */}
-    </div>
+      </div>
+    </StyleBody>
   );
 }
 
