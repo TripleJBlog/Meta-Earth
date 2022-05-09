@@ -1,8 +1,26 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route, Link, Outlet } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  Outlet,
+  useLocation,
+} from "react-router-dom";
 import LoginPage from "./components/views/LoginPage/LoginPage";
 import LandingPage from "./components/views/LandingPage/LandingPage";
 import RegisterPage from "./components/views/RegisterPage/RegisterPage";
+import OrderPage from "./components/views/OrderPage";
+import OrderData from "./data/data";
+
+function RendingPage() {
+  const location = useLocation();
+  if (location.pathname == "/") {
+    return <LandingPage />;
+  } else {
+    return <></>;
+  }
+}
 
 function Home() {
   return (
@@ -12,9 +30,10 @@ function Home() {
         <Link to="register">Register </Link>
         <Link to="login">Login </Link>
         <Link to="dashboard">Dashboard </Link>
+        <Link to="orderpage">OrderPage </Link>
       </nav>
       <hr />
-      {/* <LandingPage /> */}
+      <RendingPage />
       <Outlet />
     </>
   );
@@ -36,6 +55,7 @@ export default function App() {
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<RegisterPage />} />
+          <Route path="orderpage" element={<OrderPage data={OrderData} />} />
         </Route>
       </Routes>
     </BrowserRouter>
