@@ -38,6 +38,18 @@ app.get("/api/hello", (req, res) => {
   console.log("/api/hello called");
   res.send("Hello~");
 });
+app.get("/api/users/balance", (req, res) => {
+  let query = { email: "abcd@naver.com" };
+  const user_balance = User.findOne(query, (err, doc) => {
+    if (err) {
+      console.log("error:", err);
+    } else {
+      const obj_balance = doc.balance;
+      // docs.forEach((doc) => console.log("data:", doc.name));
+      res.send(obj_balance);
+    }
+  });
+});
 app.post("/api/users/register", (req, res) => {
   const user = new User(req.body);
   user.save((err, userInfo) => {

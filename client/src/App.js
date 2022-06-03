@@ -1,4 +1,6 @@
 import "./App.css";
+import axios from "axios";
+import { useEffect } from "react";
 import {
   BrowserRouter,
   Routes,
@@ -12,6 +14,7 @@ import LandingPage from "./components/views/LandingPage/LandingPage";
 import RegisterPage from "./components/views/RegisterPage/RegisterPage";
 import OrderPage from "./components/views/OrderPage";
 import OrderData from "./data/data";
+import React, { useState } from "react";
 
 function RendingPage() {
   const location = useLocation();
@@ -23,8 +26,16 @@ function RendingPage() {
 }
 
 function Home() {
+  const [balance, setBalance] = useState(0);
+  useEffect(() => {
+    axios.get("/api/users/balance").then((response) => {
+      setBalance(response.data);
+    });
+  }, []);
+
   return (
     <>
+      Gold: {balance.gold}, Cash: {balance.cash}
       <nav>
         <Link to="/">Home </Link>
         <Link to="register">Register </Link>

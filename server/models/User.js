@@ -22,6 +22,14 @@ const userSchema = mongoose.Schema({
   tokenExp: {
     type: Number,
   },
+  balance: {
+    gold: {
+      type: Number,
+    },
+    cash: {
+      type: Number,
+    },
+  },
 });
 // Do function before save user infomration to model
 userSchema.pre("save", function (next) {
