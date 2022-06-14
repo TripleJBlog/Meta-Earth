@@ -15,10 +15,26 @@ import RegisterPage from "./components/views/RegisterPage/RegisterPage";
 import OrderPage from "./components/views/OrderPage";
 import OrderData from "./data/data";
 import React, { useState } from "react";
+import styled from "styled-components";
+
+const FlexContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const FlexItem = styled.div`
+  flex: 1;
+  overflow: auto;
+`;
+
+const StyleIcon = styled.img`
+  width: 35px;
+  height: 35px;
+`;
 
 function RendingPage() {
   const location = useLocation();
-  if (location.pathname == "/") {
+  if (location.pathname === "/") {
     return <LandingPage />;
   } else {
     return <></>;
@@ -35,7 +51,16 @@ function Home() {
 
   return (
     <>
-      Gold: {balance.gold}, Cash: {balance.cash}
+      <FlexContainer className="balance">
+        <FlexItem>
+          <StyleIcon src={require("./assets/icon_gold.png")} />
+          <span className="gold">{balance.gold} G</span>
+        </FlexItem>
+        <FlexItem>
+          <StyleIcon src={require("./assets/icon_dollar.png")} />
+          <span className="cash">{balance.cash}</span>
+        </FlexItem>
+      </FlexContainer>
       <nav>
         <Link to="/">Home </Link>
         <Link to="register">Register </Link>
