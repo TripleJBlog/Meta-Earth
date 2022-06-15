@@ -16,22 +16,23 @@ import BuildingPage from "./components/views/BuildingPage";
 import OrderPage from "./components/views/OrderPage";
 import OrderData from "./data/data";
 import React, { useState } from "react";
-import styled from "styled-components";
+import Balance from "./components/views/Balance";
+// import styled from "styled-components";
 
-const FlexContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
+// const FlexContainer = styled.div`
+//   display: flex;
+//   flex-direction: row;
+// `;
 
-const FlexItem = styled.div`
-  flex: 1;
-  overflow: auto;
-`;
+// const FlexItem = styled.div`
+//   flex: 1;
+//   overflow: auto;
+// `;
 
-const StyleIcon = styled.img`
-  width: 35px;
-  height: 35px;
-`;
+// const StyleIcon = styled.img`
+//   width: 35px;
+//   height: 35px;
+// `;
 
 function RendingPage() {
   const location = useLocation();
@@ -43,25 +44,9 @@ function RendingPage() {
 }
 
 function Home() {
-  const [balance, setBalance] = useState(0);
-  useEffect(() => {
-    axios.get("/api/users/balance").then((response) => {
-      setBalance(response.data);
-    });
-  }, []);
-
   return (
     <>
-      <FlexContainer className="balance">
-        <FlexItem>
-          <StyleIcon src={require("./assets/icon_gold.png")} />
-          <span className="gold">{balance.gold} G</span>
-        </FlexItem>
-        <FlexItem>
-          <StyleIcon src={require("./assets/icon_dollar.png")} />
-          <span className="cash">{balance.cash}</span>
-        </FlexItem>
-      </FlexContainer>
+      <Balance />
       <nav>
         <Link to="/">Home </Link>
         <Link to="register">Register </Link>
