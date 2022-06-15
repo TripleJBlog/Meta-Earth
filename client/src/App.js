@@ -12,6 +12,7 @@ import {
 import LoginPage from "./components/views/LoginPage/LoginPage";
 import LandingPage from "./components/views/LandingPage/LandingPage";
 import RegisterPage from "./components/views/RegisterPage/RegisterPage";
+import BuildingPage from "./components/views/BuildingPage";
 import OrderPage from "./components/views/OrderPage";
 import OrderData from "./data/data";
 import React, { useState } from "react";
@@ -67,6 +68,7 @@ function Home() {
         <Link to="login">Login </Link>
         <Link to="dashboard">Dashboard </Link>
         <Link to="orderpage">OrderPage </Link>
+        <Link to="building">Buildings </Link>
       </nav>
       <hr />
       <RendingPage />
@@ -92,6 +94,7 @@ export default function App() {
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<RegisterPage />} />
           <Route path="orderpage" element={<OrderPage data={OrderData} />} />
+          <Route path="building" element={<BuildingPage data={OrderData} />} />
         </Route>
       </Routes>
     </BrowserRouter>
