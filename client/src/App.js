@@ -1,6 +1,4 @@
 import "./App.css";
-import axios from "axios";
-import { useEffect } from "react";
 import {
   BrowserRouter,
   Routes,
@@ -17,22 +15,6 @@ import OrderPage from "./components/views/OrderPage";
 import OrderData from "./data/data";
 import React, { useState } from "react";
 import Balance from "./components/views/Balance";
-// import styled from "styled-components";
-
-// const FlexContainer = styled.div`
-//   display: flex;
-//   flex-direction: row;
-// `;
-
-// const FlexItem = styled.div`
-//   flex: 1;
-//   overflow: auto;
-// `;
-
-// const StyleIcon = styled.img`
-//   width: 35px;
-//   height: 35px;
-// `;
 
 function RendingPage() {
   const location = useLocation();
