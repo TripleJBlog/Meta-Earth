@@ -28,6 +28,9 @@ if (process.env.NODE_ENV === "production") {
 
 const config = require("./config/key");
 const { User } = require("./models/User");
+const { Building } = require("./models/Building");
+const { routeBuilding } = require("./routes/building");
+
 mongoose
   .connect(config.mongoURI)
   .then(console.log("DB connected!"))
@@ -50,6 +53,21 @@ app.get("/api/users/balance", (req, res) => {
     }
   });
 });
+
+// app.use("/api/building", routeBuilding);
+
+app.get("/api/building", (req, res) => {
+  Building.findOne({ uid: "building_information" }, (error, toc) => {
+    if (error) {
+      console.log("error:", error);
+    } else {
+      const test = toc.house;
+      console.log(toc);
+      res.send(test.toString()); // send String value for result
+    }
+  });
+});
+
 app.post("/api/users/register", (req, res) => {
   const user = new User(req.body);
   user.save((err, userInfo) => {
