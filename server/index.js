@@ -30,18 +30,22 @@ const config = require("./config/key");
 const { User } = require("./models/User");
 const { Building } = require("./models/Building");
 const { Country } = require("./models/Country");
-const { routeBuilding } = require("./routes/building");
 
 mongoose
   .connect(config.mongoURI)
   .then(console.log("DB connected!"))
   .catch((err) => console.log(err));
 
+app.use("/api", require("./routes/apiRouter"));
+// app.use("/api/building", routeBuilding);
+// app.post("/api/country", createCountry);
+
 app.get("/", (req, res) => res.send("CleanWater!!"));
 // app.get("/api/hello", (req, res) => {
 //   console.log("/api/hello called");
 //   res.send("Hello~");
 // });
+
 app.get("/api/users/balance", (req, res) => {
   let query = { email: "abcd@naver.com" };
   const user_balance = User.findOne(query, (err, doc) => {
@@ -54,27 +58,6 @@ app.get("/api/users/balance", (req, res) => {
     }
   });
 });
-
-// app.use("/api/building", routeBuilding);
-app.post("/api/country", createCountry);
-async function createCountry(req, res) {
-  try {
-    const country = await new Country({
-      countryCode: "KOR",
-      countryName: "Republic of Korea",
-      gdp: "1798530000000",
-      budget: "-6.1",
-      taxRate: "45",
-      interestRate: "2.25",
-      inflationRate: "6",
-      unemploymentRate: "2.9",
-    });
-    await country.save();
-    res.send(country);
-  } catch (e) {
-    console.log(e);
-  }
-}
 
 app.get("/api/building", (req, res) => {
   Building.findOne({ uid: "building_information" }, (error, toc) => {

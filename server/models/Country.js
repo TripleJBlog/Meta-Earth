@@ -13,11 +13,21 @@ const countrySchema = mongoose.Schema({
     unique: 1,
     required: true,
   },
+  population: {
+    type: Number,
+    trim: true,
+  },
   gdp: {
     type: Number,
     trim: true,
   },
-  budget: {
+  money: {
+    type: String,
+    unique: 1,
+    required: true,
+    trim: true,
+  },
+  currency: {
     type: Number,
     trim: true,
   },
